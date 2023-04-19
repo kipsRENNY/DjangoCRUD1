@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <style>
+        input:hover{
+            background-color: #b6d4fe;
+        }
+        form{
+            background-color: mediumspringgreen;
+        }
+    </style>
+
+</head>
+<body>
+<h1 style="text-align: center;font-weight: 600"><u> Update information </u></h1>
+<form method="POST" action="/update/{{ student.id }}" class="p-5">
+    {% csrf_token %}
+    <label for="fname" class="form-label">Firstname</label>
+    <input type="text"  name="firstname" id="fname" value="{{ student.firstname }}" class="form-control">
+    <label for="lname" class="form-label">lastname</label>
+    <input type="text" name="lastname" id="lname" value="{{ student.lastname }}" class="form-control">
+    <label for="mail" class="form-label">email</label>
+    <input type="email" name="email" id="fname" value="{{ student.email }}" class="form-control"><br>
+    <center><button type="submit" class="btn btn-primary btn-lg w-100" style="--bs-btn-hover-bg: green">Update</button></center>
+</form>
+</body>
+</html>
+{% endblock %}
